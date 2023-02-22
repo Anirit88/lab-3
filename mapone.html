@@ -17,7 +17,7 @@
             top: 0;
             bottom: 0;
             width: 100%;
-             
+        } 
         /* the layout of the legend panel */
         #legend {
             position: absolute;
@@ -54,12 +54,11 @@
             right: 0;
             font-style: italic;
         }
-
         /* the text color of a hyper link */
         a {
             color: black
         }
-        }
+        
     </style>
 </head>
 
@@ -76,7 +75,9 @@
             center: [-100, 40], // starting center
             projection: 'albers'
         });
-        
+        const grades = [100, 10000, 50000],
+            colors = ['rgb(208,209,230)', 'rgb(103,169,207)', 'rgb(1,108,89)'],
+            radii = [5, 15, 20];
         map.on('load', () => {
             map.addSource('COVID cases', {
                 type: 'geojson',
@@ -86,7 +87,7 @@
             map.addLayer({
                 'id': 'covid-case',
                 'type': 'circle',
-                'source': 'COVID cases'
+                'source': 'COVID cases',
                 'paint': {
                     // increase the radii of the circle as the zoom level and dbh value increases
                     'circle-radius': {
